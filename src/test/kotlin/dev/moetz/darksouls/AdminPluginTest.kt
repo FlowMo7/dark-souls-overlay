@@ -38,7 +38,7 @@ class AdminPluginTest {
         dataSource = DataSource(contentFile = contentFile, colorFile = colorFile)
         changeLogger = ChangeLogger(logFile = logFile)
         dataManager = DataManager(dataSource, changeLogger)
-        divManager = DivManager("/static/font/EBGaramond.ttf")
+        divManager = DivManager()
 
         adminUsername = "admin"
         adminPassword = "This1Is2A3Password4"

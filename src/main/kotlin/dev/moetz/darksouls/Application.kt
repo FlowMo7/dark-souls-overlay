@@ -30,9 +30,17 @@ fun main() {
 //    val dataFilePath = "./data" //uncomment for development purposes
     val dataFilePath = "/var/dark-souls-backend/data"
 
-    val contentFile = File(dataFilePath, "content.txt")
-    val colorFile = File(dataFilePath, "color.txt")
-    val logFile = File(dataFilePath, "change.txt")
+    File(dataFilePath).also { dataFolder ->
+        if (dataFolder.exists().not()) {
+            if (dataFolder.mkdirs().not()) {
+                throw IllegalStateException("Could not create directory ${dataFolder.absolutePath}.")
+            }
+        }
+    }
+
+    val contentFile = File(dataFilePath, "content.txt").ensureCanWrite()
+    val colorFile = File(dataFilePath, "color.txt").ensureCanWrite()
+    val logFile = File(dataFilePath, "change.txt").ensureCanWrite()
 
     val domain = System.getenv("DOMAIN")?.takeIf { it.isNotBlank() } ?: "localhost:8080"
     val isSecure = System.getenv("IS_SECURE")?.takeIf { it.isNotBlank() }?.toBooleanStrict() ?: false
@@ -45,7 +53,7 @@ fun main() {
 
     val dataSource = DataSource(contentFile = contentFile, colorFile = colorFile)
     val changeLogger = ChangeLogger(logFile = logFile)
-    val divManager = DivManager("/static/font/EBGaramond.ttf")
+    val divManager = DivManager()
 
     val dataManager = DataManager(
         dataSource = dataSource,
@@ -94,4 +102,17 @@ fun main() {
         configureAdmin(dataManager, adminUserName, adminPassword)
         configureWebSocket(dataManager, divManager)
     }.start(wait = true)
+}
+
+private fun File.ensureCanWrite(): File {
+    if (this.exists().not()) {
+        this.createNewFile()
+        if (this.exists().not()) {
+            throw IllegalStateException("Could not create file at $parent: $absolutePath.")
+        }
+    }
+    if (this.canWrite().not()) {
+        throw IllegalStateException("Write access to $absolutePath not granted.")
+    }
+    return this
 }

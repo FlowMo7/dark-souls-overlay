@@ -2,13 +2,13 @@ package dev.moetz.darksouls.data
 
 import io.ktor.util.*
 
-class DivManager(
-    private val fontPath: String
-) {
+class DivManager {
 
     fun dataUpdateToHtmlDiv(dataUpdate: DataManager.DataUpdate): String {
-        return "<style>@font-face{font-family: darksoulsfont;src: url($fontPath);}</style>" +
-                "<div style=\"color:#${dataUpdate.color ?: "FFFFFF"};font-family: darksoulsfont;\">" + dataUpdate.content.escapeHTML().replace("\\n", "<br />") + "</div>"
+        val innerHtml = dataUpdate.content.escapeHTML().newLinesAsBreak()
+        return "<div style=\"color:#${dataUpdate.color};font-family: darksoulsfont;\">$innerHtml</div>"
     }
+
+    private fun String.newLinesAsBreak(): String = this.replace("\\n", "<br />")
 
 }

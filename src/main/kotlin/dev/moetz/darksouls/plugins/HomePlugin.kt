@@ -48,6 +48,10 @@ fun Application.configure(
                     script(type = "text/javascript") {
                         unsafe { +"window.onload = function() { initWebsocket('${if (isSecure) "wss" else "ws"}://${publicHostname}/ws/content'); };" }
                     }
+
+                    style {
+                        unsafe { +"@font-face{font-family: darksoulsfont;src: url(/static/font/EBGaramond.ttf);}" }
+                    }
                 }
                 body {
                     div {
