@@ -44,7 +44,7 @@ necessary.
 ```yaml
 services:
   buzzer:
-    image: "flowmo7/dark-souls-overlay:master"
+    image: "flowmo7/dark-souls-overlay:1.0.0"
     restart: unless-stopped
     ports:
       - 8080:8080 #Should be behind an SSL reverse proxy
