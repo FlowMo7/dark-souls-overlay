@@ -95,12 +95,30 @@ class AdminPluginTest {
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Set the Dark Souls Counter Text</title>
+    <title>Dark Souls Overlay</title>
+    <style>body {font-size: 1em;}.inputfield {border: 1px solid #B8B8B8;padding: 0.8em 0.8em;border-radius: 5px;font-size: 1em;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}.inputbutton {color: #FFFFFF;background-color: orange;cursor: pointer;border: 0;border-radius: 5px;padding: 0.8em 1.2em;font-size: 1em;}</style>
   </head>
   <body>
+    <h2>Dark Souls Overlay</h2>
     <div>
-      <p>This is the console for the dark souls stream overlay.<br>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
-      <form action="/set" method="post"><input type="text" name="content" value=""><input type="submit"><br><br><br>Additionally, the font-color can be adjusted here.<br>Only 6-digit HEX color codes are allowed. Will be updated by clicking 'Submit' (above) as well.<br>#<input type="text" name="color" value="FFFFFF"></form>
+      <p>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
+      <form action="/set" method="post">
+        <table>
+          <tr>
+            <td>Content to Display:</td>
+            <td><input type="text" name="content" class="inputfield" value=""></td>
+          </tr>
+          <tr>
+            <td>Font-Color: </td>
+            <td><input type="text" name="color" class="inputfield" value="FFFFFF"></td>
+            <td><input type="submit" class="inputbutton"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><i>Only <a href="https://htmlcolorcodes.com/" target="_blank">6-digit HEX color codes </a> are allowed.</i></td>
+          </tr>
+        </table>
+      </form>
     </div>
   </body>
 </html>
@@ -126,12 +144,30 @@ class AdminPluginTest {
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Set the Dark Souls Counter Text</title>
+    <title>Dark Souls Overlay</title>
+    <style>body {font-size: 1em;}.inputfield {border: 1px solid #B8B8B8;padding: 0.8em 0.8em;border-radius: 5px;font-size: 1em;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}.inputbutton {color: #FFFFFF;background-color: orange;cursor: pointer;border: 0;border-radius: 5px;padding: 0.8em 1.2em;font-size: 1em;}</style>
   </head>
   <body>
+    <h2>Dark Souls Overlay</h2>
     <div>
-      <p>This is the console for the dark souls stream overlay.<br>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
-      <form action="/set" method="post"><input type="text" name="content" value=""><input type="submit"><br><br><br>Additionally, the font-color can be adjusted here.<br>Only 6-digit HEX color codes are allowed. Will be updated by clicking 'Submit' (above) as well.<br>#<input type="text" name="color" value="FFFFFF"></form>
+      <p>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
+      <form action="/set" method="post">
+        <table>
+          <tr>
+            <td>Content to Display:</td>
+            <td><input type="text" name="content" class="inputfield" value=""></td>
+          </tr>
+          <tr>
+            <td>Font-Color: </td>
+            <td><input type="text" name="color" class="inputfield" value="FFFFFF"></td>
+            <td><input type="submit" class="inputbutton"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><i>Only <a href="https://htmlcolorcodes.com/" target="_blank">6-digit HEX color codes </a> are allowed.</i></td>
+          </tr>
+        </table>
+      </form>
     </div>
   </body>
 </html>
@@ -157,12 +193,30 @@ class AdminPluginTest {
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Set the Dark Souls Counter Text</title>
+    <title>Dark Souls Overlay</title>
+    <style>body {font-size: 1em;}.inputfield {border: 1px solid #B8B8B8;padding: 0.8em 0.8em;border-radius: 5px;font-size: 1em;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}.inputbutton {color: #FFFFFF;background-color: orange;cursor: pointer;border: 0;border-radius: 5px;padding: 0.8em 1.2em;font-size: 1em;}</style>
   </head>
   <body>
+    <h2>Dark Souls Overlay</h2>
     <div>
-      <p>This is the console for the dark souls stream overlay.<br>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
-      <form action="/set" method="post"><input type="text" name="content" value="Hello World!"><input type="submit"><br><br><br>Additionally, the font-color can be adjusted here.<br>Only 6-digit HEX color codes are allowed. Will be updated by clicking 'Submit' (above) as well.<br>#<input type="text" name="color" value="FFFFFF"></form>
+      <p>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
+      <form action="/set" method="post">
+        <table>
+          <tr>
+            <td>Content to Display:</td>
+            <td><input type="text" name="content" class="inputfield" value="Hello World!"></td>
+          </tr>
+          <tr>
+            <td>Font-Color: </td>
+            <td><input type="text" name="color" class="inputfield" value="FFFFFF"></td>
+            <td><input type="submit" class="inputbutton"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><i>Only <a href="https://htmlcolorcodes.com/" target="_blank">6-digit HEX color codes </a> are allowed.</i></td>
+          </tr>
+        </table>
+      </form>
     </div>
   </body>
 </html>
@@ -188,12 +242,30 @@ class AdminPluginTest {
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Set the Dark Souls Counter Text</title>
+    <title>Dark Souls Overlay</title>
+    <style>body {font-size: 1em;}.inputfield {border: 1px solid #B8B8B8;padding: 0.8em 0.8em;border-radius: 5px;font-size: 1em;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}.inputbutton {color: #FFFFFF;background-color: orange;cursor: pointer;border: 0;border-radius: 5px;padding: 0.8em 1.2em;font-size: 1em;}</style>
   </head>
   <body>
+    <h2>Dark Souls Overlay</h2>
     <div>
-      <p>This is the console for the dark souls stream overlay.<br>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
-      <form action="/set" method="post"><input type="text" name="content" value="Hello World! äöüÖÄÜß"><input type="submit"><br><br><br>Additionally, the font-color can be adjusted here.<br>Only 6-digit HEX color codes are allowed. Will be updated by clicking 'Submit' (above) as well.<br>#<input type="text" name="color" value="FFFFFF"></form>
+      <p>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
+      <form action="/set" method="post">
+        <table>
+          <tr>
+            <td>Content to Display:</td>
+            <td><input type="text" name="content" class="inputfield" value="Hello World! äöüÖÄÜß"></td>
+          </tr>
+          <tr>
+            <td>Font-Color: </td>
+            <td><input type="text" name="color" class="inputfield" value="FFFFFF"></td>
+            <td><input type="submit" class="inputbutton"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><i>Only <a href="https://htmlcolorcodes.com/" target="_blank">6-digit HEX color codes </a> are allowed.</i></td>
+          </tr>
+        </table>
+      </form>
     </div>
   </body>
 </html>
@@ -219,12 +291,30 @@ class AdminPluginTest {
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Set the Dark Souls Counter Text</title>
+    <title>Dark Souls Overlay</title>
+    <style>body {font-size: 1em;}.inputfield {border: 1px solid #B8B8B8;padding: 0.8em 0.8em;border-radius: 5px;font-size: 1em;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}.inputbutton {color: #FFFFFF;background-color: orange;cursor: pointer;border: 0;border-radius: 5px;padding: 0.8em 1.2em;font-size: 1em;}</style>
   </head>
   <body>
+    <h2>Dark Souls Overlay</h2>
     <div>
-      <p>This is the console for the dark souls stream overlay.<br>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
-      <form action="/set" method="post"><input type="text" name="content" value="&amp;lt;i&amp;gt;Hello, world!&amp;lt;/i&amp;gt;&amp;lt;script&amp;gt;alert(&amp;#x27;Test&amp;#x27;);&amp;lt;/script&amp;gt;"><input type="submit"><br><br><br>Additionally, the font-color can be adjusted here.<br>Only 6-digit HEX color codes are allowed. Will be updated by clicking 'Submit' (above) as well.<br>#<input type="text" name="color" value="FFFFFF"></form>
+      <p>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
+      <form action="/set" method="post">
+        <table>
+          <tr>
+            <td>Content to Display:</td>
+            <td><input type="text" name="content" class="inputfield" value="&amp;lt;i&amp;gt;Hello, world!&amp;lt;/i&amp;gt;&amp;lt;script&amp;gt;alert(&amp;#x27;Test&amp;#x27;);&amp;lt;/script&amp;gt;"></td>
+          </tr>
+          <tr>
+            <td>Font-Color: </td>
+            <td><input type="text" name="color" class="inputfield" value="FFFFFF"></td>
+            <td><input type="submit" class="inputbutton"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><i>Only <a href="https://htmlcolorcodes.com/" target="_blank">6-digit HEX color codes </a> are allowed.</i></td>
+          </tr>
+        </table>
+      </form>
     </div>
   </body>
 </html>
