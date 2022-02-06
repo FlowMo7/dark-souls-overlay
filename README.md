@@ -22,7 +22,7 @@ Possible environment variables:
 ```yaml
 services:
   buzzer:
-    image: "flowmo7/dark-souls-backend:master"
+    image: "flowmo7/dark-souls-overlay:master"
     restart: unless-stopped
     ports:
       - 8080:8080 #Should be behind an SSL reverse proxy
