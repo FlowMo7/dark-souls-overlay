@@ -67,7 +67,7 @@ fun Application.configureAdmin(
                             p {
                                 +"This is the console for the dark souls stream overlay."
                                 br()
-                                +"The Text entered here will be displayed in the stream once submitted by clicking 'Submit'."
+                                +"The text entered here will be displayed in the stream once submitted by clicking 'Submit'."
                                 br()
                                 +"'\\n' can be used to create a line-break."
                             }

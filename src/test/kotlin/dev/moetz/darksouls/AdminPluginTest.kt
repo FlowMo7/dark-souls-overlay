@@ -99,7 +99,7 @@ class AdminPluginTest {
   </head>
   <body>
     <div>
-      <p>This is the console for the dark souls stream overlay.<br>The Text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
+      <p>This is the console for the dark souls stream overlay.<br>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
       <form action="/set" method="post"><input type="text" name="content" value=""><input type="submit"><br><br><br>Additionally, the font-color can be adjusted here.<br>Only 6-digit HEX color codes are allowed. Will be updated by clicking 'Submit' (above) as well.<br>#<input type="text" name="color" value="FFFFFF"></form>
     </div>
   </body>
@@ -130,7 +130,7 @@ class AdminPluginTest {
   </head>
   <body>
     <div>
-      <p>This is the console for the dark souls stream overlay.<br>The Text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
+      <p>This is the console for the dark souls stream overlay.<br>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
       <form action="/set" method="post"><input type="text" name="content" value=""><input type="submit"><br><br><br>Additionally, the font-color can be adjusted here.<br>Only 6-digit HEX color codes are allowed. Will be updated by clicking 'Submit' (above) as well.<br>#<input type="text" name="color" value="FFFFFF"></form>
     </div>
   </body>
@@ -161,7 +161,7 @@ class AdminPluginTest {
   </head>
   <body>
     <div>
-      <p>This is the console for the dark souls stream overlay.<br>The Text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
+      <p>This is the console for the dark souls stream overlay.<br>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
       <form action="/set" method="post"><input type="text" name="content" value="Hello World!"><input type="submit"><br><br><br>Additionally, the font-color can be adjusted here.<br>Only 6-digit HEX color codes are allowed. Will be updated by clicking 'Submit' (above) as well.<br>#<input type="text" name="color" value="FFFFFF"></form>
     </div>
   </body>
@@ -192,7 +192,7 @@ class AdminPluginTest {
   </head>
   <body>
     <div>
-      <p>This is the console for the dark souls stream overlay.<br>The Text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
+      <p>This is the console for the dark souls stream overlay.<br>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
       <form action="/set" method="post"><input type="text" name="content" value="Hello World! äöüÖÄÜß"><input type="submit"><br><br><br>Additionally, the font-color can be adjusted here.<br>Only 6-digit HEX color codes are allowed. Will be updated by clicking 'Submit' (above) as well.<br>#<input type="text" name="color" value="FFFFFF"></form>
     </div>
   </body>
@@ -223,7 +223,7 @@ class AdminPluginTest {
   </head>
   <body>
     <div>
-      <p>This is the console for the dark souls stream overlay.<br>The Text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
+      <p>This is the console for the dark souls stream overlay.<br>The text entered here will be displayed in the stream once submitted by clicking 'Submit'.<br>'\n' can be used to create a line-break.</p>
       <form action="/set" method="post"><input type="text" name="content" value="&amp;lt;i&amp;gt;Hello, world!&amp;lt;/i&amp;gt;&amp;lt;script&amp;gt;alert(&amp;#x27;Test&amp;#x27;);&amp;lt;/script&amp;gt;"><input type="submit"><br><br><br>Additionally, the font-color can be adjusted here.<br>Only 6-digit HEX color codes are allowed. Will be updated by clicking 'Submit' (above) as well.<br>#<input type="text" name="color" value="FFFFFF"></form>
     </div>
   </body>
