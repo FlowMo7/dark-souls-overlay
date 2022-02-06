@@ -2,20 +2,28 @@
 
 **Stream-overlay to include in Dark-Souls sessions for e.g. the number of deaths**
 
-An overlay that can be managed via twitch chat or via a password-secured webpage, that e.g. moderators can access and edit.  
+An overlay that can be managed via twitch chat or via a password-secured webpage, that e.g. moderators can access and
+edit.
 
 ## Setup
 
-The docker image can be found here: [hub.docker.com/r/flowmo7/dark-souls-overlay](https://hub.docker.com/r/flowmo7/dark-souls-overlay).
+The docker image can be found
+here: [hub.docker.com/r/flowmo7/dark-souls-overlay](https://hub.docker.com/r/flowmo7/dark-souls-overlay).
 
 Possible environment variables:
 
 * `DOMAIN`: The domain this application is available at, e.g. `dark-souls-overlay.example.org`
-* `IS_SECURE`: Whether this application is available as HTTPS / behind an HTTPS reverse proxy (which it should be). Default to `true`.
+* `IS_SECURE`: Whether this application is available as HTTPS / behind an HTTPS reverse proxy (which it should be).
+  Default to `true`.
 * `ADMIN_USER`: The username to access the dashboard to change the overlay content. Defaults to `admin`.
-* `ADMIN_PASSWORD`: The password to access the dashboard to change the overlay content. Defaults to `password`. **You definitely want to change that one!**
-* `TWITCH_COMMAND_CHANNEL`: The name of the twitch channel to listen for commands. If not set, will not listen on any chats for commands.
+* `ADMIN_PASSWORD`: The password to access the dashboard to change the overlay content. Defaults to `password`. **You
+  definitely want to change that one!**
+* `TWITCH_COMMAND_CHANNEL`: The name of the twitch channel to listen for commands. If not set, will not listen on any
+  chats for commands.
 * `TWITCH_COMMAND_PREFIX`: The command prefix for updating the content via twitch chat. Defaults to `!overlay`.
+
+The data is being persisted in `/var/dark-souls-backend/data`. It is advised to map this path as a volume, although not
+necessary.
 
 ### Example docker-compose.yml
 
@@ -30,6 +38,8 @@ services:
       - DOMAIN=dark-souls-overlay.example.org
       - ADMIN_USER=admin
       - ADMIN_PASSWORD=S0m3S3cur3P4assw0rd
+    volumes:
+      - /opt/docker/dark-soul-persistence:/var/dark-souls-backend/data:rw #Change host location to your persistence path
 ```
 
 # LICENSE
