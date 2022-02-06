@@ -1,7 +1,8 @@
 variables:
   COMPONENT_IMAGE: registry.moetz.dev/dark-souls-overlay:$CI_BUILD_REF_NAME
-  COMPONENT_BRANCH_IMAGE: registry.moetz.dev/dark-souls-overlay:$CI_COMMIT_REF_NAME
   COMPONENT_LATEST_IMAGE: registry.moetz.dev/dark-souls-overlay:latest
+  COMPONENT_IMAGE_DOCKER_HUB: flowmo7/dark-souls-overlay:$CI_BUILD_REF_NAME
+  COMPONENT_LATEST_IMAGE_DOCKER_HUB: flowmo7/dark-souls-overlay:latest
 
 stages:
   - build_application
@@ -45,12 +46,29 @@ tag latest:
   only:
     - master
 
-tag branch name:
-  stage: tag_image
+
+build and push docker hub:
+  stage: build_image
   script:
-    - docker login -u $REGISTRY_MOETZ_DEV_USERNAME -p $REGISTRY_MOETZ_DEV_PASSWORD registry.moetz.dev
-    - docker pull $COMPONENT_IMAGE
-    - docker tag $COMPONENT_IMAGE $COMPONENT_BRANCH_IMAGE
-    - docker push $COMPONENT_BRANCH_IMAGE
+    - echo $COMPONENT_IMAGE_DOCKER_HUB
+    - docker build --pull -t $COMPONENT_IMAGE_DOCKER_HUB ./
+    - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+    - docker push $COMPONENT_IMAGE_DOCKER_HUB
   tags:
     - docker
+  only:
+    - develop
+    - master
+    - tags
+
+tag latest docker hub:
+  stage: tag_image
+  script:
+    - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+    - docker pull $COMPONENT_IMAGE_DOCKER_HUB
+    - docker tag $COMPONENT_IMAGE_DOCKER_HUB $COMPONENT_LATEST_IMAGE_DOCKER_HUB
+    - docker push $COMPONENT_LATEST_IMAGE_DOCKER_HUB
+  tags:
+    - docker
+  only:
+    - master
