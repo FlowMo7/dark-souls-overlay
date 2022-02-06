@@ -5,6 +5,20 @@
 An overlay that can be managed via twitch chat or via a password-secured webpage, that e.g. moderators can access and
 edit.
 
+<p align="center">
+  <img src="https://github.com/FlowMo7/dark-souls-overlay/raw/master/screenshots/DarkSoulsOverlayScreenshot.png" alt="Screenshot of the game Dark Souls with the OBS overlay of the number of deaths" />
+</p>
+
+### How to edit the displayed content
+
+You can either define a twitch chat and a command to be used, which then moderators and the broadcaster can use to update the shown content, e.g. using `!overlay 7 deaths`.
+
+Alternatively, the page offers a very simplistic, password-protected page, that can be used to update the value as well as configure the font color:
+
+<p align="center">
+  <img src="https://github.com/FlowMo7/dark-souls-overlay/raw/master/screenshots/DarkSoulsOverlaySetPageScreenshot.png" alt="Screenshot of the page to update the shown value and font color" />
+</p>
+
 ## Setup
 
 The docker image can be found
