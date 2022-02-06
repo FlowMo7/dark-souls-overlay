@@ -6,7 +6,7 @@ An overlay that can be managed via twitch chat or via a password-secured webpage
 
 ## Setup
 
-The docker image can be found here: [hub.docker.com/r/flowmo7/dark-souls-backend](https://hub.docker.com/r/flowmo7/dark-souls-backend).
+The docker image can be found here: [hub.docker.com/r/flowmo7/dark-souls-overlay](https://hub.docker.com/r/flowmo7/dark-souls-overlay).
 
 Possible environment variables:
 
