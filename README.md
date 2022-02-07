@@ -29,6 +29,9 @@ hosted domain, so e.g. `https://dark-souls-overlay.example.org/`.
 To update the overlay text, navigate to `https://dark-souls-overlay.example.org/set` on your domain, and enter the
 credentials you declared as `ADMIN_USER` and `ADMIN_PASSWORD`.
 
+Please note, that, when updating this via chat command, there will not be a feedback in the chat whether the action has
+been performed (not like Nightbot), but the overlay will just update itself.
+
 ## Setup
 
 The docker image can be found
