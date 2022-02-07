@@ -11,13 +11,23 @@ edit.
 
 ### How to edit the displayed content
 
-You can either define a twitch chat and a command to be used, which then moderators and the broadcaster can use to update the shown content, e.g. using `!overlay 7 deaths`.
+You can either define a twitch chat and a command to be used, which then moderators and the broadcaster can use to
+update the shown content, e.g. using `!overlay 7 deaths`.
 
-Alternatively, the page offers a very simplistic, password-protected page, that can be used to update the value as well as configure the font color:
+Alternatively, the page offers a very simplistic, password-protected page, that can be used to update the value as well
+as configure the font color:
 
 <p align="center">
   <img src="https://github.com/FlowMo7/dark-souls-overlay/raw/master/screenshots/DarkSoulsOverlaySetPageScreenshot.png" alt="Screenshot of the page to update the shown value and font color" />
 </p>
+
+## Usage
+
+Include the overlay as OBS source in OBS, abd layout move / size accordingly. The overlay is the index page of your
+hosted domain, so e.g. `https://dark-souls-overlay.example.org/`.
+
+To update the overlay text, navigate to `https://dark-souls-overlay.example.org/set` on your domain, and enter the
+credentials you declared as `ADMIN_USER` and `ADMIN_PASSWORD`.
 
 ## Setup
 
