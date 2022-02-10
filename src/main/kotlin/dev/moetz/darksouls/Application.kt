@@ -40,7 +40,7 @@ fun main() {
 
     val contentFile = File(dataFilePath, "content.txt").ensureCanWrite()
     val colorFile = File(dataFilePath, "color.txt").ensureCanWrite()
-    val logFile = File(dataFilePath, "change.txt").ensureCanWrite()
+    val logFile = File(dataFilePath, "changes.log").ensureCanWrite()
 
     val domain = System.getenv("DOMAIN")?.takeIf { it.isNotBlank() } ?: "localhost:8080"
     val isSecure = System.getenv("IS_SECURE")?.takeIf { it.isNotBlank() }?.toBooleanStrict() ?: false
