@@ -15,10 +15,14 @@ class TwitchChatParser(
             twitchClient.chat.joinChannel(channelName)
 
             twitchClient.eventManager.onEvent(IRCMessageEvent::class.java) { event ->
-                if (event.isMessage() && (event.isModerator() || event.isBroadcaster()) && event.isCommand(messagePrefix)) {
-                    commandTriggeredCallback.invoke(event.message.orElse("").substring(messagePrefix.length + 1))
-                }
+                onIRCMessageEvent(event, commandTriggeredCallback)
             }
+        }
+    }
+
+    fun onIRCMessageEvent(event: IRCMessageEvent, commandTriggeredCallback: (commandPayload: String) -> Unit) {
+        if (event.isMessage() && (event.isModerator() || event.isBroadcaster()) && event.isCommand(messagePrefix)) {
+            commandTriggeredCallback.invoke(event.message.orElse("").substring(messagePrefix.length + 1))
         }
     }
 
