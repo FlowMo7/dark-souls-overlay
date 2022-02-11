@@ -48,7 +48,7 @@ Possible environment variables:
 
 * `DOMAIN`: The domain this application is available at, e.g. `dark-souls-overlay.example.org`
 * `IS_SECURE`: Whether this application is available as HTTPS / behind an HTTPS reverse proxy (which it should be).
-  Default to `true`.
+  Default to `false`.
 * `ADMIN_USER`: The username to access the dashboard to change the overlay content. Defaults to `admin`.
 * `ADMIN_PASSWORD`: The password to access the dashboard to change the overlay content. Defaults to `password`. **You
   definitely want to change that one!**
@@ -70,6 +70,7 @@ services:
       - 8080:8080 #Should be behind an SSL reverse proxy
     environment:
       - DOMAIN=dark-souls-overlay.example.org
+      - IS_SECURE=true
       - ADMIN_USER=admin
       - ADMIN_PASSWORD=S0m3S3cur3P4assw0rd
     volumes:
