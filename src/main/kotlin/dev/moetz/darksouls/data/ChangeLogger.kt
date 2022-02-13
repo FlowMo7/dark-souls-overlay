@@ -4,6 +4,7 @@ import io.ktor.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.runBlocking
 import org.apache.commons.io.input.Tailer
 import org.apache.commons.io.input.TailerListener
 import java.io.File
@@ -48,13 +49,14 @@ class ChangeLogger(
     private fun getLastXLogEntriesFlow(numberOfLogLines: Int): Flow<List<LogEntry>> {
         return getLogEntriesFlow()
             .runningFold(emptyList<LogEntry>()) { acc, value ->
-                val newList = (acc + value).sortedByDescending { it.dateTime }
+                val newList = listOf(value) + acc
                 if (newList.size > numberOfLogLines) {
                     newList.dropLast(newList.size - numberOfLogLines)
                 } else {
                     newList
                 }
             }
+            .sample(50)
     }
 
     private data class LogEntry(
@@ -81,7 +83,7 @@ class ChangeLogger(
 
                 override fun handle(line: String?) {
 //                    println("handle(${file.absolutePath}): $line")
-                    line?.let { trySend(it) }
+                    runBlocking { send(line.orEmpty()) }
                 }
 
                 override fun handle(ex: Exception?) {
