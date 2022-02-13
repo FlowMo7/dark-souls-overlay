@@ -1,14 +1,22 @@
 package dev.moetz.darksouls.plugins
 
+import dev.moetz.darksouls.data.ChangeLogger
 import dev.moetz.darksouls.data.DataManager
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.html.*
 import io.ktor.http.*
+import io.ktor.http.cio.websocket.*
+import io.ktor.http.content.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.util.*
+import io.ktor.websocket.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.html.*
 
 data class PostContentBody(
@@ -18,8 +26,11 @@ data class PostContentBody(
 
 fun Application.configureAdmin(
     dataManager: DataManager,
+    changeLogger: ChangeLogger,
     adminUserName: String,
-    adminUserPassword: String
+    adminUserPassword: String,
+    isSecure: Boolean,
+    publicHostname: String
 ) {
 
     authentication {
@@ -39,6 +50,10 @@ fun Application.configureAdmin(
 
         authenticate("basic-auth") {
 
+            route("static") {
+                resource(remotePath = "admin-script.js", resource = "admin-script.js")
+            }
+
             route("api/admin") {
                 post("content") {
                     try {
@@ -47,6 +62,22 @@ fun Application.configureAdmin(
                         call.respond(HttpStatusCode.OK, "")
                     } catch (throwable: Throwable) {
                         call.respond(status = HttpStatusCode.BadRequest, "Bad request: $throwable")
+                    }
+                }
+
+                webSocket("ws/log") {
+                    changeLogger.getLogHtmlWebsocketFlow()
+                        .onEach { list -> send(Frame.Text(list)) }
+                        .flowOn(Dispatchers.IO)
+                        .launchIn(this)
+
+                    for (frame in incoming) {
+                        when (frame) {
+                            is Frame.Text -> {
+                                val receivedText = frame.readText()
+                                println("received text-frame: $receivedText")
+                            }
+                        }
                     }
                 }
             }
@@ -61,6 +92,23 @@ fun Application.configureAdmin(
                     head {
                         meta(charset = "utf-8")
                         title("Dark Souls Overlay")
+
+                        script(
+                            type = "text/javascript",
+                            src = "/static/reconnecting-websocket.min.js"
+                        ) {
+
+                        }
+                        script(
+                            type = "text/javascript",
+                            src = "/static/admin-script.js"
+                        ) {
+
+                        }
+
+                        script(type = "text/javascript") {
+                            unsafe { +"window.onload = function() { initLogWebsocket('${if (isSecure) "wss" else "ws"}://${publicHostname}/api/admin/ws/log'); };" }
+                        }
 
                         style {
                             unsafe {
@@ -136,6 +184,15 @@ fun Application.configureAdmin(
                                             }
                                         }
                                     }
+                                }
+                            }
+
+                            br()
+                            br()
+                            b { +"Changelog (last 10 entries):" }
+                            pre {
+                                div {
+                                    id = "log_content"
                                 }
                             }
                         }

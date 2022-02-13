@@ -99,7 +99,7 @@ fun main() {
 
         configure(dataManager, divManager, domain, isSecure)
         configureStatic()
-        configureAdmin(dataManager, adminUserName, adminPassword)
+        configureAdmin(dataManager, changeLogger, adminUserName, adminPassword, isSecure, domain)
         configureWebSocket(dataManager, divManager)
     }.start(wait = true)
 }
