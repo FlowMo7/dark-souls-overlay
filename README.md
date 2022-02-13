@@ -64,7 +64,7 @@ your overlay data may not be persisted between application restarts.
 ```yaml
 services:
   buzzer:
-    image: "flowmo7/dark-souls-overlay:1.0.2"
+    image: "flowmo7/dark-souls-overlay:1.0.3"
     restart: unless-stopped
     ports:
       - 8080:8080 #Should be behind an SSL reverse proxy
