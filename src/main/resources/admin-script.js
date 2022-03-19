@@ -12,7 +12,7 @@ function initLogWebsocket(webSocketUrl) {
         var content = '';
         payload.changes.forEach(function (item) {
             let date = convertDateToLocalTimezone(item.dateTime);
-            let dateTimeString = withLeadingZero(date.getDay()) + '.' + withLeadingZero(date.getMonth()) + '.' + withLeadingZero(date.getFullYear()) + ' ' + withLeadingZero(date.getHours()) + ':' + withLeadingZero(date.getMinutes()) + ':' + withLeadingZero(date.getSeconds());
+            let dateTimeString = withLeadingZero(date.getDate()) + '.' + withLeadingZero(date.getMonth()) + '.' + withLeadingZero(date.getFullYear()) + ' ' + withLeadingZero(date.getHours()) + ':' + withLeadingZero(date.getMinutes()) + ':' + withLeadingZero(date.getSeconds());
 
             content += dateTimeString + ' ' + item.text + '\n';
         })
@@ -37,16 +37,5 @@ function withLeadingZero(number, threeDigits = false) {
 }
 
 function convertDateToLocalTimezone(date) {
-    let parsedAndConverted = new Date((typeof date === "string" ? new Date(date) : date).toLocaleString());
-    parsedAndConverted.setMilliseconds(getMilliseconds(date));
-    return parsedAndConverted;
-}
-
-function getMilliseconds(date) {
-    let split = date.split('.');
-    if (split.length > 3) {
-        return Math.round(parseInt(split[1]) / 1000);
-    } else {
-        return Math.round(parseInt(split[1]));
-    }
+    return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString());
 }
