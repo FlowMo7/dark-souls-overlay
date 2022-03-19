@@ -10,9 +10,11 @@ function initLogWebsocket(webSocketUrl) {
         console.log('[message] Data received from server: ' + event.data);
         let payload = JSON.parse(event.data);
         var content = '';
-        payload.changes.forEach(function (dateTime, text) {
-            let date = convertDateToLocalTimezone(dateTime);
-            content += date + ': ' + text + '\n';
+        payload.changes.forEach(function (item) {
+            let date = convertDateToLocalTimezone(item.dateTime);
+            let dateTimeString = withLeadingZero(date.getDay()) + '.' + withLeadingZero(date.getMonth()) + '.' + withLeadingZero(date.getFullYear()) + ' ' + withLeadingZero(date.getHours()) + ':' + withLeadingZero(date.getMinutes()) + ':' + withLeadingZero(date.getSeconds());
+
+            content += dateTimeString + ' ' + item.text + '\n';
         })
         document.getElementById('log_content').innerHTML = content;
     };
