@@ -2,7 +2,6 @@ package dev.moetz.darksouls.plugins
 
 import dev.moetz.darksouls.data.ChangeLogger
 import dev.moetz.darksouls.data.DataManager
-import dev.moetz.darksouls.util.OffsetDateTimeSerializer
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.html.*
@@ -19,34 +18,12 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.html.*
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.descriptors.PrimitiveKind
-import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
-import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.encoding.Decoder
-import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.Json
-import java.time.OffsetDateTime
-import java.time.format.DateTimeFormatter
 
 @kotlinx.serialization.Serializable
 data class PostContentBody(
     val content: String,
     val color: String
 )
-
-@kotlinx.serialization.Serializable
-data class LogResponse(
-    val changes: List<Change>
-) {
-    @kotlinx.serialization.Serializable
-    data class Change(
-        @Serializable(OffsetDateTimeSerializer::class)
-        val dateTime: OffsetDateTime,
-        val text: String
-    )
-}
 
 fun Application.configureAdmin(
     dataManager: DataManager,
@@ -91,23 +68,7 @@ fun Application.configureAdmin(
 
                 webSocket("ws/log") {
                     changeLogger.getLogHtmlWebsocketFlow()
-                        .onEach { list ->
-                            send(
-                                Frame.Text(
-                                    Json.encodeToString(
-                                        LogResponse.serializer(),
-                                        LogResponse(
-                                            changes = list.map { (dateTime, text) ->
-                                                LogResponse.Change(
-                                                    dateTime = dateTime,
-                                                    text = text
-                                                )
-                                            }
-                                        )
-                                    )
-                                )
-                            )
-                        }
+                        .onEach { logText -> send(Frame.Text(logText)) }
                         .flowOn(Dispatchers.IO)
                         .launchIn(this)
 
