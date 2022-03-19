@@ -9,6 +9,7 @@ import org.apache.commons.io.input.Tailer
 import org.apache.commons.io.input.TailerListener
 import java.io.File
 import java.io.FileNotFoundException
+import java.time.OffsetDateTime
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
@@ -32,16 +33,11 @@ class ChangeLogger(
         }
     }
 
-    fun getLogHtmlWebsocketFlow(): Flow<String> {
+    fun getLogHtmlWebsocketFlow(): Flow<List<Pair<OffsetDateTime, String>>> {
         return getLastXLogEntriesFlow(10)
             .map { list ->
-                buildString {
-                    list
-                        .forEach { entry ->
-                            append(entry.dateTime.format(DateTimeFormatter.ofPattern("dd.MM. HH:mm:ss")))
-                            append(": ")
-                            appendLine(entry.content.escapeHTML())
-                        }
+                list.map { entry ->
+                    entry.dateTime.toOffsetDateTime() to entry.content.escapeHTML()
                 }
             }
     }
