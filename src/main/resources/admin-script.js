@@ -12,7 +12,7 @@ function initLogWebsocket(webSocketUrl) {
         var content = '';
         payload.changes.forEach(function (item) {
             let date = convertDateToLocalTimezone(item.dateTime);
-            let dateTimeString = withLeadingZero(date.getDate()) + '.' + withLeadingZero(date.getMonth()) + '.' + withLeadingZero(date.getFullYear()) + ' ' + withLeadingZero(date.getHours()) + ':' + withLeadingZero(date.getMinutes()) + ':' + withLeadingZero(date.getSeconds());
+            let dateTimeString = withLeadingZero(date.getDate()) + '.' + withLeadingZero(date.getMonth() + 1) + '.' + withLeadingZero(date.getFullYear()) + ' ' + withLeadingZero(date.getHours()) + ':' + withLeadingZero(date.getMinutes()) + ':' + withLeadingZero(date.getSeconds());
 
             content += dateTimeString + ' ' + item.text + '\n';
         })
